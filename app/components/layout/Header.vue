@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { MessageSquare, Menu, X } from 'lucide-vue-next'
+import { PhoneCall, Menu, X } from 'lucide-vue-next'
 
 const navigation = [
   { name: 'Início', href: '/' },
@@ -53,6 +53,7 @@ const closeMenu = () => { isMenuOpen.value = false }
           :key="item.name"
           :to="item.href"
           class="font-body font-bodyMedium text-xs text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth"
+          exact-active-class="!text-accent"
         >
           {{ item.name }}
         </NuxtLink>
@@ -61,12 +62,12 @@ const closeMenu = () => { isMenuOpen.value = false }
       <!-- Botão Fale Conosco (Desktop) -->
       <div class="hidden lg:block">
         <a
-          href="https://wa.me/5547999999999"
+          href="https://api.whatsapp.com/send/?phone=554736223742&text&type=phone_number&app_absent=0"
           target="_blank"
           class="inline-flex items-center justify-center gap-2 px-5 py-2 border border-accent text-accent hover:bg-accent hover:text-primary font-body font-bodyMedium text-xs uppercase tracking-wider rounded-md transition-smooth"
         >
           <span>Fale Conosco</span>
-          <MessageSquare class="w-4 h-4" />
+          <PhoneCall class="w-4 h-4" />
         </a>
       </div>
 
@@ -109,18 +110,19 @@ const closeMenu = () => { isMenuOpen.value = false }
           :key="item.name"
           :to="item.href"
           class="font-body font-bodyMedium text-sm text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth py-3 border-b border-white/5 last:border-0"
+          exact-active-class="!text-accent"
           @click="closeMenu"
         >
           {{ item.name }}
         </NuxtLink>
         <a
-          href="https://wa.me/5547999999999"
+          href="https://api.whatsapp.com/send/?phone=554736223742&text&type=phone_number&app_absent=0"
           target="_blank"
           class="inline-flex items-center justify-center gap-2 px-5 py-3 border border-accent text-accent hover:bg-accent hover:text-primary font-body font-bodyMedium text-xs uppercase tracking-wider rounded-md transition-smooth mt-3"
           @click="closeMenu"
         >
           <span>Fale Conosco</span>
-          <MessageSquare class="w-4 h-4" />
+          <PhoneCall class="w-4 h-4" />
         </a>
       </div>
     </Transition>

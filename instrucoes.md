@@ -567,3 +567,9 @@ Prioridades do projeto:
 8. Código limpo
 9. Imports explícitos
 10. Facilidade de manutenção
+
+---
+
+# Regras de Layout e Espaçamento (OBRIGATÓRIO)
+
+* **Espaçamento entre Linhas (Line-Height):** Sempre utilizar line-height de exatamente **2.0** (usando a classe Tailwind `leading-loose` ou inline `style="line-height: 2;"`) em todos os blocos de texto corrido/descrições do site para manter a legibilidade, sofisticação e harmonia visual do design escuro. Não mexer nos parágrafos (margens/espaçamentos entre blocos).

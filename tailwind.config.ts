@@ -32,8 +32,8 @@ export default <Partial<Config>>{
         bg: {
           light: '#FFFFFF',    // Fundo principal claro
           alt: '#F8FAFC',      // Fundo secundário claro
-          dark: '#07131B',     // Fundo principal escuro
-          darkAlt: '#0F212D',  // Fundo secundário escuro (para cards/seções)
+          dark: '#111111',     // Fundo principal escuro (#111111)
+          darkAlt: '#1F1F1F',  // Fundo secundário escuro/cards (#1F1F1F)
         },
         content: {
           primary: '#07131B',  // Texto principal em fundo claro
@@ -44,7 +44,7 @@ export default <Partial<Config>>{
         },
         border: {
           light: '#E2E8F0',    // Borda clara
-          dark: '#1E2E3A',     // Borda escura
+          dark: '#2C2C2C',     // Borda escura (#2C2C2C)
           gold: '#C9A86A',     // Borda dourada
         }
       },
