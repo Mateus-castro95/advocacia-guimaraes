@@ -4,7 +4,7 @@ import { ChevronRight, Mail, MapPin, Facebook, Instagram } from 'lucide-vue-next
 const linksCol1 = [
   { name: 'Início', href: '/' },
   { name: 'Áreas de Atuação', href: '/areas-de-atuacao' },
-  { name: 'Fale Conosco', href: '/fale-conosco' }
+  { name: 'Fale Conosco', href: 'https://api.whatsapp.com/send/?phone=554736223742&text=Olá! Preciso de assessoria jurídica.&type=phone_number&app_absent=0' }
 ]
 
 const linksCol2 = [
@@ -172,11 +172,6 @@ const linksCol2 = [
       <!-- Copyright Sub-Footer -->
       <div class="border-t border-border-dark mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-normal">
         <p>© 2026 Advocacia Guimarães. Todos os direitos reservados.</p>
-        <div class="flex gap-4">
-          <NuxtLink to="/politica-de-privacidade" class="hover:text-accent transition-colors duration-300">
-            Políticas de Privacidade
-          </NuxtLink>
-        </div>
       </div>
 
     </div>

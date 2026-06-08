@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Guimarães Advocacia',
+      htmlAttrs: {
+        lang: 'pt-BR'
+      },
       link: [
         { rel: 'icon', type: 'image/webp', href: '/favicon.webp' }
       ]
