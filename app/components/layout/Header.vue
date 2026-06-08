@@ -1,6 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { PhoneCall, Menu, X } from 'lucide-vue-next'
+import { useRoute } from '#imports'
+
+const route = useRoute()
+
+const isAreasActive = computed(() => {
+  return route.path === '/areas-de-atuacao' || route.path.startsWith('/advogado-')
+})
 
 const navigation = [
   { name: 'Início', href: '/' },
@@ -72,6 +79,7 @@ const closeMenu = () => {
             <NuxtLink
               :to="item.href"
               class="font-body font-bodyMedium text-xs text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth flex items-center gap-1.5 focus:outline-none"
+              :class="{ '!text-accent': isAreasActive }"
             >
               {{ item.name }}
             </NuxtLink>
@@ -86,6 +94,7 @@ const closeMenu = () => {
                   :key="area.name"
                   :to="area.href"
                   class="font-body text-xs text-slate-300 hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-white/5 text-left font-normal"
+                  exact-active-class="!text-accent bg-white/5"
                 >
                   {{ area.name }}
                 </NuxtLink>
@@ -170,6 +179,7 @@ const closeMenu = () => {
               <NuxtLink
                 :to="item.href"
                 class="font-body font-bodyMedium text-sm text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth py-3 text-left flex-grow"
+                :class="{ '!text-accent': isAreasActive }"
                 @click="closeMenu"
               >
                 {{ item.name }}
@@ -200,7 +210,8 @@ const closeMenu = () => {
                 v-for="area in areas"
                 :key="area.name"
                 :to="area.href"
-                class="font-body text-xs text-slate-400 hover:text-accent transition-colors py-2 px-2"
+                class="font-body text-xs text-slate-400 hover:text-accent transition-colors py-2 px-2 rounded-md"
+                exact-active-class="!text-accent bg-white/5"
                 @click="closeMenu"
               >
                 {{ area.name }}

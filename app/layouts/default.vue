@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from '~/components/layout/Header.vue'
 import Footer from '~/components/layout/Footer.vue'
+import WhatsAppFloating from '~/components/layout/WhatsAppFloating.vue'
 </script>
 
 <template>
@@ -10,5 +11,6 @@ import Footer from '~/components/layout/Footer.vue'
       <slot />
     </main>
     <Footer />
+    <WhatsAppFloating />
   </div>
 </template>
