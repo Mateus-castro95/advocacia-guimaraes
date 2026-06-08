@@ -46,21 +46,28 @@ const closeMenu = () => {
     <div
       class="w-full rounded-2xl px-6 py-3 sm:px-8 flex items-center justify-between relative overflow-visible"
       style="
-        background: rgba(255, 255, 255, 0.07);
-        backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
-        -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
-        border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
       "
     >
-      <!-- Reflexo de luz (glass sheen) -->
+      <!-- Background de Glassmorphism com clipping para resolver bug de canto quadrado do backdrop-filter -->
       <div
-        class="absolute inset-0 pointer-events-none"
-        style="background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 40%, transparent 100%);"
-      ></div>
+        class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none"
+        style="
+          background: rgba(255, 255, 255, 0.07);
+          backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
+          -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+        "
+      >
+        <!-- Reflexo de luz (glass sheen) -->
+        <div
+          class="absolute inset-0"
+          style="background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 40%, transparent 100%);"
+        ></div>
+      </div>
 
       <!-- Logo -->
-      <div class="flex-shrink-0 flex items-center">
+      <div class="flex-shrink-0 flex items-center relative z-10">
         <NuxtLink to="/" class="group flex items-center" @click="closeMenu">
           <img
             src="/img/Logo-Advocacia-Guimaraes.webp"
@@ -72,7 +79,7 @@ const closeMenu = () => {
       </div>
 
       <!-- Links de Navegação (Desktop) -->
-      <nav class="hidden lg:flex items-center space-x-8">
+      <nav class="hidden lg:flex items-center space-x-8 relative z-10">
         <template v-for="item in navigation" :key="item.name">
           <!-- Item com Dropdown (Áreas de Atuação) -->
           <div v-if="item.hasDropdown" class="relative group py-2">
@@ -87,7 +94,7 @@ const closeMenu = () => {
             <div
               class="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-80 z-50 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
             >
-              <div class="w-full bg-bg-darkAlt/95 backdrop-blur-md border border-border-dark rounded-xl shadow-[0_10px_45px_rgba(0,0,0,0.5)] p-4 flex flex-col gap-1">
+              <div class="w-full bg-bg-darkAlt/95 backdrop-blur-md border border-border-dark rounded-xl shadow-[0_10px_45px_rgba(0,0,0,0.5)] p-4 flex flex-col gap-1 overflow-hidden">
                 <!-- Links das Áreas -->
                 <NuxtLink
                   v-for="area in areas"
@@ -126,7 +133,7 @@ const closeMenu = () => {
       </nav>
 
       <!-- Botão Fale Conosco (Desktop) -->
-      <div class="hidden lg:block">
+      <div class="hidden lg:block relative z-10">
         <a
           href="https://api.whatsapp.com/send/?phone=554736223742&text&type=phone_number&app_absent=0"
           target="_blank"
@@ -138,7 +145,7 @@ const closeMenu = () => {
       </div>
 
       <!-- Botão Hambúrguer (Mobile) -->
-      <div class="lg:hidden">
+      <div class="lg:hidden relative z-10">
         <button
           type="button"
           class="text-content-inverse hover:text-accent p-2 focus:outline-none transition-smooth flex items-center justify-center"
@@ -162,7 +169,7 @@ const closeMenu = () => {
     >
       <div
         v-if="isMenuOpen"
-        class="lg:hidden mt-2 rounded-2xl px-6 py-4 flex flex-col gap-1"
+        class="lg:hidden mt-2 rounded-2xl px-6 py-4 flex flex-col gap-1 overflow-hidden"
         style="
           background: rgba(255, 255, 255, 0.07);
           backdrop-filter: blur(24px) saturate(180%) brightness(1.1);

@@ -4,7 +4,7 @@ import { NuxtLink } from '#components'
 </script>
 
 <template>
-  <section id="aboutHero" class="py-20 bg-bg-darkAlt relative overflow-hidden">
+  <section id="aboutHero" class="pt-36 pb-20 sm:pt-40 lg:pt-44 bg-bg-darkAlt relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Top Row: Grid with Left Text/Buttons and Right Image -->

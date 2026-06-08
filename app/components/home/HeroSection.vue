@@ -75,7 +75,7 @@ onUnmounted(() => {
     </div>
 
     <!-- Conteúdo em cima da imagem -->
-    <div class="relative z-20 w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-16">
+    <div class="relative z-20 w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36 sm:pt-40 lg:pt-44 pb-12">
       <div class="relative min-h-[350px] w-full max-w-2xl">
         <div 
           v-for="(slide, index) in slides" 
