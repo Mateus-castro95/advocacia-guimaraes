@@ -9,9 +9,27 @@ const navigation = [
   { name: 'Notícias', href: '/noticias' },
 ]
 
+const areas = [
+  { name: 'Direito Administrativo', href: '/advogado-administrativo-canoinhas-sc' },
+  { name: 'Direito Ambiental', href: '/advogado-ambiental-canoinhas-sc' },
+  { name: 'Direito Civil', href: '/advogado-civil-canoinhas-sc' },
+  { name: 'Direito de Família e Sucessões', href: '/advogado-familia-e-sucessoes-canoinhas-sc' },
+  { name: 'Direito Imobiliário', href: '/advogado-imobiliario-canoinhas-sc' },
+  { name: 'Direito Médico, Odontológico e da Saúde', href: '/advogado-saude-canoinhas-sc' },
+  { name: 'Direito Penal', href: '/advogado-penal-canoinhas-sc' },
+  { name: 'Direito Previdenciário', href: '/advogado-previdenciario-canoinhas-sc' },
+  { name: 'Direito Societário', href: '/advogado-societario-canoinhas-sc' },
+  { name: 'Direito Trabalhista', href: '/advogado-trabalhista-canoinhas-sc' },
+  { name: 'Direito Tributário', href: '/advogado-tributario-canoinhas-sc' }
+]
+
 const isMenuOpen = ref(false)
+const isAccordionOpen = ref(false)
 const toggleMenu = () => { isMenuOpen.value = !isMenuOpen.value }
-const closeMenu = () => { isMenuOpen.value = false }
+const closeMenu = () => { 
+  isMenuOpen.value = false
+  isAccordionOpen.value = false
+}
 </script>
 
 <template>
@@ -19,7 +37,7 @@ const closeMenu = () => { isMenuOpen.value = false }
 
     <!-- Barra principal do header -->
     <div
-      class="w-full rounded-2xl px-6 py-3 sm:px-8 flex items-center justify-between relative overflow-hidden"
+      class="w-full rounded-2xl px-6 py-3 sm:px-8 flex items-center justify-between relative overflow-visible"
       style="
         background: rgba(255, 255, 255, 0.07);
         backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
@@ -48,15 +66,54 @@ const closeMenu = () => { isMenuOpen.value = false }
 
       <!-- Links de Navegação (Desktop) -->
       <nav class="hidden lg:flex items-center space-x-8">
-        <NuxtLink
-          v-for="item in navigation"
-          :key="item.name"
-          :to="item.href"
-          class="font-body font-bodyMedium text-xs text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth"
-          exact-active-class="!text-accent"
-        >
-          {{ item.name }}
-        </NuxtLink>
+        <template v-for="item in navigation" :key="item.name">
+          <!-- Item com Dropdown (Áreas de Atuação) -->
+          <div v-if="item.hasDropdown" class="relative group py-2">
+            <NuxtLink
+              :to="item.href"
+              class="font-body font-bodyMedium text-xs text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth flex items-center gap-1.5 focus:outline-none"
+            >
+              {{ item.name }}
+            </NuxtLink>
+            <!-- Dropdown Panel (Desktop) -->
+            <div
+              class="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-80 z-50 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
+            >
+              <div class="w-full bg-bg-darkAlt/95 backdrop-blur-md border border-border-dark rounded-xl shadow-[0_10px_45px_rgba(0,0,0,0.5)] p-4 flex flex-col gap-1">
+                <!-- Links das Áreas -->
+                <NuxtLink
+                  v-for="area in areas"
+                  :key="area.name"
+                  :to="area.href"
+                  class="font-body text-xs text-slate-300 hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-white/5 text-left font-normal"
+                >
+                  {{ area.name }}
+                </NuxtLink>
+
+                <!-- Divider -->
+                <div class="h-[1px] bg-white/10 my-2"></div>
+
+                <!-- Botão Ver Todas -->
+                <NuxtLink
+                  to="/areas-de-atuacao"
+                  class="font-body text-xs bg-accent text-primary font-semibold py-2.5 px-3 rounded-md text-center block"
+                >
+                  Ver todas
+                </NuxtLink>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item Normal -->
+          <NuxtLink
+            v-else
+            :to="item.href"
+            class="font-body font-bodyMedium text-xs text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth"
+            exact-active-class="!text-accent"
+          >
+            {{ item.name }}
+          </NuxtLink>
+        </template>
       </nav>
 
       <!-- Botão Fale Conosco (Desktop) -->
@@ -64,7 +121,7 @@ const closeMenu = () => { isMenuOpen.value = false }
         <a
           href="https://api.whatsapp.com/send/?phone=554736223742&text&type=phone_number&app_absent=0"
           target="_blank"
-          class="inline-flex items-center justify-center gap-2 px-5 py-2 border border-accent text-accent hover:bg-accent hover:text-primary font-body font-bodyMedium text-xs uppercase tracking-wider rounded-md transition-smooth"
+          class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-accent text-primary font-body font-bodyMedium text-xs uppercase tracking-wider rounded-lg"
         >
           <span>Fale Conosco</span>
           <PhoneCall class="w-4 h-4" />
@@ -105,20 +162,80 @@ const closeMenu = () => { isMenuOpen.value = false }
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
         "
       >
-        <NuxtLink
-          v-for="item in navigation"
-          :key="item.name"
-          :to="item.href"
-          class="font-body font-bodyMedium text-sm text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth py-3 border-b border-white/5 last:border-0"
-          exact-active-class="!text-accent"
-          @click="closeMenu"
-        >
-          {{ item.name }}
-        </NuxtLink>
+        <template v-for="item in navigation" :key="item.name">
+          <!-- Accordion de Áreas de Atuação -->
+          <div v-if="item.hasDropdown" class="flex flex-col border-b border-white/5 py-1">
+            <div class="flex items-center justify-between">
+              <!-- Link do Texto -->
+              <NuxtLink
+                :to="item.href"
+                class="font-body font-bodyMedium text-sm text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth py-3 text-left flex-grow"
+                @click="closeMenu"
+              >
+                {{ item.name }}
+              </NuxtLink>
+              
+              <!-- Seta para Expandir/Recolher -->
+              <button
+                type="button"
+                class="text-content-inverse/85 hover:text-accent p-3 focus:outline-none flex items-center justify-center transition-smooth"
+                aria-label="Expandir Áreas de Atuação"
+                @click="isAccordionOpen = !isAccordionOpen"
+              >
+                <span 
+                  class="text-[10px] transition-transform duration-300"
+                  :class="isAccordionOpen ? 'rotate-180' : ''"
+                >
+                  ▼
+                </span>
+              </button>
+            </div>
+            
+            <!-- Accordion Content -->
+            <div
+              v-show="isAccordionOpen"
+              class="flex flex-col gap-2 pl-4 pb-3 overflow-hidden transition-all duration-300"
+            >
+              <NuxtLink
+                v-for="area in areas"
+                :key="area.name"
+                :to="area.href"
+                class="font-body text-xs text-slate-400 hover:text-accent transition-colors py-2 px-2"
+                @click="closeMenu"
+              >
+                {{ area.name }}
+              </NuxtLink>
+              
+              <!-- Divider -->
+              <div class="h-[1px] bg-white/5 my-1"></div>
+
+              <!-- Botão Ver Todas -->
+              <NuxtLink
+                to="/areas-de-atuacao"
+                class="font-body text-xs bg-accent text-primary font-semibold py-2.5 px-3 rounded-md text-center block"
+                @click="closeMenu"
+              >
+                Ver todas
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Item Normal Mobile -->
+          <NuxtLink
+            v-else
+            :to="item.href"
+            class="font-body font-bodyMedium text-sm text-content-inverse/85 hover:text-accent uppercase tracking-wider transition-smooth py-3 border-b border-white/5 last:border-0"
+            exact-active-class="!text-accent"
+            @click="closeMenu"
+          >
+            {{ item.name }}
+          </NuxtLink>
+        </template>
+
         <a
           href="https://api.whatsapp.com/send/?phone=554736223742&text&type=phone_number&app_absent=0"
           target="_blank"
-          class="inline-flex items-center justify-center gap-2 px-5 py-3 border border-accent text-accent hover:bg-accent hover:text-primary font-body font-bodyMedium text-xs uppercase tracking-wider rounded-md transition-smooth mt-3"
+          class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-accent text-primary font-body font-bodyMedium text-xs uppercase tracking-wider rounded-lg mt-3"
           @click="closeMenu"
         >
           <span>Fale Conosco</span>
