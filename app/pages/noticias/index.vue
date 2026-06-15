@@ -57,11 +57,11 @@ watch(selectedCategory, () => {
   <div class="bg-bg-dark text-content-inverse font-body">
     <NoticiasHero />
 
-    <section class="py-16 sm:py-24 relative overflow-hidden">
+    <section class="pt-0 pb-16 sm:pb-24 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <!-- Filtro de Categorias Premium (Mobile: Select, Desktop: Tabs) -->
-        <div class="mb-16">
+        <div class="mb-12">
           <!-- Dropdown para Mobile (Visível apenas em telas menores que lg) -->
           <div class="lg:hidden w-full max-w-md mx-auto">
             <div class="relative">

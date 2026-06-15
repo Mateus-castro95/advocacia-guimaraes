@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <section class="relative pt-36 pb-16 bg-bg-dark flex flex-col items-center justify-center text-center overflow-hidden border-b border-border-dark">
+  <section class="relative pt-36 pb-10 bg-bg-dark flex flex-col items-center justify-center text-center overflow-hidden">
     <!-- Efeito de Luz Luxuoso -->
     <div class="absolute inset-0 pointer-events-none opacity-10">
       <div class="absolute -top-48 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent rounded-full blur-[180px]"></div>
