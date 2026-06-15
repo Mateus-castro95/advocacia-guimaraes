@@ -7,7 +7,7 @@ import WhatsAppFloating from '~/components/layout/WhatsAppFloating.vue'
 
 const route = useRoute()
 const isHeroTransparent = computed(() => {
-  return route.path === '/' || route.path === '/sobre-nos'
+  return route.path === '/' || route.path === '/sobre-nos' || route.path.startsWith('/noticias')
 })
 </script>
 

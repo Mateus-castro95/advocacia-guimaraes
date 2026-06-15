@@ -9,6 +9,11 @@ const professionals = [
     name: 'Diogo Antônio Maiorchi Gomes',
     oab: 'OAB/SC 47.727',
     image: '/img/imagem-do-time.webp'
+  },
+  {
+    name: 'Camila Aparecida Muller',
+    oab: 'OAB/SC 78.835',
+    image: '/img/imagem-do-time.webp'
   }
 ]
 </script>
@@ -35,8 +40,8 @@ const professionals = [
         </div>
       </div>
 
-      <!-- Professional Cards Grid (2 columns as requested) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 max-w-4xl mx-auto pt-8">
+      <!-- Professional Cards Grid (3 columns) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 max-w-6xl mx-auto pt-8">
         <div 
           v-for="prof in professionals" 
           :key="prof.name"

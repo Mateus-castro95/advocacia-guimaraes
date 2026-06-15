@@ -44,7 +44,7 @@ const closeMenu = () => {
 
     <!-- Barra principal do header -->
     <div
-      class="w-full rounded-2xl px-6 py-3 sm:px-8 flex items-center justify-between relative overflow-visible"
+      class="w-full rounded-2xl px-6 py-3 sm:px-8 lg:py-3.5 flex items-center justify-between relative overflow-visible"
       style="
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
       "
@@ -72,7 +72,7 @@ const closeMenu = () => {
           <img
             src="/img/Logo-Advocacia-Guimaraes.webp"
             alt="Logo Advocacia Guimarães"
-            class="h-10 w-auto object-contain transition-smooth group-hover:opacity-90"
+            class="h-12 sm:h-[52px] lg:h-[58px] w-auto object-contain transition-all duration-300 group-hover:opacity-90 group-hover:scale-[1.03]"
             style="filter: brightness(0) saturate(100%) invert(67%) sepia(21%) saturate(983%) brightness(95%) contrast(85%) drop-shadow(0 0 4px rgba(180, 145, 90, 0.25));"
           />
         </NuxtLink>
